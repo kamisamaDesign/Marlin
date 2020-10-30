@@ -37,7 +37,7 @@
  *
  * Advanced settings can be found in Configuration_adv.h
  */
-#define CONFIGURATION_H_VERSION 020007
+#define CONFIGURATION_H_VERSION 020008
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -108,7 +108,8 @@
 
 /**
  * Select a secondary serial port on the board to use for communication with the host.
- * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
+ * Currently Ethernet (-2) is only supported on Teensy 4.1 boards.
+ * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
 #define SERIAL_PORT_2 3
 
@@ -737,15 +738,15 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'L6470', 'L6474', 'POWERSTEP01', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  A4988
-#define Y_DRIVER_TYPE  A4988
-#define Z_DRIVER_TYPE  A4988
+#define X_DRIVER_TYPE  TMC2208_STANDALONE
+#define Y_DRIVER_TYPE  TMC2208_STANDALONE
+#define Z_DRIVER_TYPE  TMC2208_STANDALONE
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE TMC2208_STANDALONE
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -801,6 +802,8 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 92.6 }
+// TITAN EXTRUDER:
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 92.6 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1280,7 +1283,7 @@
  * RAMPS-based boards use SERVO3_PIN for the first runout sensor.
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  */
-// #define FILAMENT_RUNOUT_SENSOR
+#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
@@ -1703,11 +1706,6 @@
 #define PREHEAT_2_TEMP_BED    90
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
-
-#define PREHEAT_3_LABEL       "PETG"
-#define PREHEAT_3_TEMP_HOTEND 210
-#define PREHEAT_3_TEMP_BED     60
-#define PREHEAT_3_FAN_SPEED     0 // Value from 0 to 255
 
 /**
  * Nozzle Park
@@ -2479,7 +2477,7 @@
 //
 // 480x320, 3.5", FSMC Stock Display from TronxXY
 //
-//#define TFT_TRONXY_X5SA
+#define TFT_TRONXY_X5SA
 
 //
 // 480x320, 3.5", FSMC Stock Display from AnyCubic
@@ -2509,17 +2507,17 @@
 //
 // Generic TFT with detailed options
 //
-//#define TFT_GENERIC
+// #define TFT_GENERIC
 #if ENABLED(TFT_GENERIC)
   // :[ 'AUTO', 'ST7735', 'ST7789', 'ST7796', 'R61505', 'ILI9328', 'ILI9341', 'ILI9488' ]
   #define TFT_DRIVER AUTO
 
   // Interface. Enable one of the following options:
-  //#define TFT_INTERFACE_FSMC
+  #define TFT_INTERFACE_FSMC
   //#define TFT_INTERFACE_SPI
 
   // TFT Resolution. Enable one of the following options:
-  //#define TFT_RES_320x240
+  #define TFT_RES_320x240
   //#define TFT_RES_480x272
   //#define TFT_RES_480x320
 #endif
@@ -2534,8 +2532,8 @@
  *   For LVGL_UI also copy the 'assets' folder from the build directory to the
  *   root of your SD card, together with the compiled firmware.
  */
-//#define TFT_CLASSIC_UI
-//#define TFT_COLOR_UI
+// #define TFT_CLASSIC_UI
+#define TFT_COLOR_UI
 //#define TFT_LVGL_UI
 
 #if ENABLED(TFT_LVGL_UI)

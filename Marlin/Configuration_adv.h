@@ -32,7 +32,7 @@
  *
  * Basic settings can be found in Configuration.h
  */
-#define CONFIGURATION_ADV_H_VERSION 020007
+#define CONFIGURATION_ADV_H_VERSION 020008
 
 //===========================================================================
 //============================= Thermal Settings ============================
@@ -539,7 +539,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#define E0_AUTO_FAN_PIN FAN_PIN_2
+#define E0_AUTO_FAN_PIN PG14
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -1179,9 +1179,6 @@
   // BACK menu items keep the highlight at the top
   //#define TURBO_BACK_MENU_ITEM
 
-  // Add a mute option to the LCD menu
-  //#define SOUND_MENU_ITEM
-
   /**
    * LED Control Menu
    * Add LED Control to the LCD menu
@@ -1773,7 +1770,7 @@
     #endif
   #endif
 
-  #define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
+  // #define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
   #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
@@ -2442,6 +2439,7 @@
     #define X2_MICROSTEPS    X_MICROSTEPS
     #define X2_RSENSE         0.11
     #define X2_CHAIN_POS     -1
+    //#define X2_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(Y)
@@ -2450,6 +2448,7 @@
     #define Y_MICROSTEPS     16
     #define Y_RSENSE          0.11
     #define Y_CHAIN_POS      -1
+    //#define Y_INTERPOLATE  true
   #endif
 
   #if AXIS_IS_TMC(Y2)
@@ -2458,6 +2457,7 @@
     #define Y2_MICROSTEPS    Y_MICROSTEPS
     #define Y2_RSENSE         0.11
     #define Y2_CHAIN_POS     -1
+    //#define Y2_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(Z)
@@ -2466,6 +2466,7 @@
     #define Z_MICROSTEPS     16
     #define Z_RSENSE          0.11
     #define Z_CHAIN_POS      -1
+    //#define Z_INTERPOLATE  true
   #endif
 
   #if AXIS_IS_TMC(Z2)
@@ -2474,6 +2475,7 @@
     #define Z2_MICROSTEPS    Z_MICROSTEPS
     #define Z2_RSENSE         0.11
     #define Z2_CHAIN_POS     -1
+    //#define Z2_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(Z3)
@@ -2482,6 +2484,7 @@
     #define Z3_MICROSTEPS    Z_MICROSTEPS
     #define Z3_RSENSE         0.11
     #define Z3_CHAIN_POS     -1
+    //#define Z3_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(Z4)
@@ -2490,6 +2493,7 @@
     #define Z4_MICROSTEPS    Z_MICROSTEPS
     #define Z4_RSENSE         0.11
     #define Z4_CHAIN_POS     -1
+    //#define Z4_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(E0)
@@ -2497,6 +2501,7 @@
     #define E0_MICROSTEPS    16
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
+    //#define E0_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(E1)
@@ -2504,6 +2509,7 @@
     #define E1_MICROSTEPS   E0_MICROSTEPS
     #define E1_RSENSE         0.11
     #define E1_CHAIN_POS     -1
+    //#define E1_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(E2)
@@ -2511,6 +2517,7 @@
     #define E2_MICROSTEPS   E0_MICROSTEPS
     #define E2_RSENSE         0.11
     #define E2_CHAIN_POS     -1
+    //#define E2_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(E3)
@@ -2518,6 +2525,7 @@
     #define E3_MICROSTEPS   E0_MICROSTEPS
     #define E3_RSENSE         0.11
     #define E3_CHAIN_POS     -1
+    //#define E3_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(E4)
@@ -2525,6 +2533,7 @@
     #define E4_MICROSTEPS   E0_MICROSTEPS
     #define E4_RSENSE         0.11
     #define E4_CHAIN_POS     -1
+    //#define E4_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(E5)
@@ -2532,6 +2541,7 @@
     #define E5_MICROSTEPS   E0_MICROSTEPS
     #define E5_RSENSE         0.11
     #define E5_CHAIN_POS     -1
+    //#define E5_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(E6)
@@ -2539,6 +2549,7 @@
     #define E6_MICROSTEPS   E0_MICROSTEPS
     #define E6_RSENSE         0.11
     #define E6_CHAIN_POS     -1
+    //#define E6_INTERPOLATE true
   #endif
 
   #if AXIS_IS_TMC(E7)
@@ -2546,6 +2557,7 @@
     #define E7_MICROSTEPS   E0_MICROSTEPS
     #define E7_RSENSE         0.11
     #define E7_CHAIN_POS     -1
+    //#define E7_INTERPOLATE true
   #endif
 
   /**
@@ -3150,7 +3162,7 @@
      * This allows the laser to keep in perfect sync with the planner and removes
      * the powerup/down delay since lasers require negligible time.
      */
-    #define LASER_POWER_INLINE
+    //#define LASER_POWER_INLINE
 
     #if ENABLED(LASER_POWER_INLINE)
       /**
